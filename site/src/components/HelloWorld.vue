@@ -1,37 +1,66 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
+    <input v-model="data.name"><br>
+    <table class="table">
+      <thead>
+      <tr>
+        <td><strong>Options</strong></td>
+        <td></td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr v-for="(option, index) in data.options">
+        <td><input type="text" v-model="option.name"></td>
+        <td>
+          <a v-on:click="removeElement(index);" style="cursor: pointer">Remove</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div>
+      <button class="button btn-primary" @click="addRow">Add option</button>
+    </div><br>
+    <button @click="createStrawpoll">create</button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  props: {
-    msg: String
+  data () {
+    return {
+      data: {
+        name: '',
+        options: [{name:""}]
+      },
+      info: ''
+    }
+  },
+  methods: {
+    createStrawpoll: function() {
+      this.axios
+        .post('http://localhost:8000/api/strawpoll/create',
+          JSON.stringify(this.data)
+        )
+        .then(response => (
+             console.log(response.url_key)
+          )
+        )
+    },
+    addRow: function() {
+      var elem = document.createElement('tr');
+      this.data.options.push({
+        name: ""
+      });
+    },
+    removeElement: function(index) {
+      this.data.options.splice(index, 1);
+    },
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 </style>

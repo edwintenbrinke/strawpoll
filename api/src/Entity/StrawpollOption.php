@@ -49,9 +49,9 @@ class StrawpollOption
      * @param \App\Entity\Strawpoll $strawpoll
      * @return $this
      */
-    public function create($name, Strawpoll $strawpoll)
+    public function create($option, Strawpoll $strawpoll)
     {
-        $this->name = $name;
+        $this->name = $option['name'];
         $this->votes = 0;
         $this->strawpoll = $strawpoll;
 
