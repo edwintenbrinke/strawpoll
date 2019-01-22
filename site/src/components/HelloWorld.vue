@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <input v-model="data.name"><br>
+
     <table class="table">
       <thead>
       <tr>
@@ -9,12 +10,12 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="(option, index) in data.options">
-        <td><input type="text" v-model="option.name"></td>
-        <td>
-          <a v-on:click="removeElement(index);" style="cursor: pointer">Remove</a>
-        </td>
-      </tr>
+        <tr v-for="(option, index) in data.options" v-bind:key="index">
+          <td><input type="text" v-model="option.name" @keydown.enter="addRow"></td>
+          <td>
+            <a v-on:click="removeElement(index);" style="cursor: pointer">Remove</a>
+          </td>
+        </tr>
       </tbody>
     </table>
     <div>
@@ -39,16 +40,15 @@ export default {
   methods: {
     createStrawpoll: function() {
       this.axios
-        .post('http://localhost:8000/api/strawpoll/create',
+        .post('http://localhost:8001/api/strawpoll/create',
           JSON.stringify(this.data)
         )
         .then(response => (
-             console.log(response.url_key)
+             this.$router.push('/view/'+response.data.url_key)
           )
         )
     },
     addRow: function() {
-      var elem = document.createElement('tr');
       this.data.options.push({
         name: ""
       });

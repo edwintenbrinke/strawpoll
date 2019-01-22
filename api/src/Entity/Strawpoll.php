@@ -58,6 +58,10 @@ class Strawpoll
 
         foreach($data['options'] as $option)
         {
+            if($option['name'] === '') {
+                continue;
+            }
+
             $strawpoll_option = new StrawpollOption();
             $this->options[] = $strawpoll_option->create($option, $this);;
         }
