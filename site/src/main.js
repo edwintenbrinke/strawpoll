@@ -10,6 +10,7 @@ import VueGoogleCharts from 'vue-google-charts'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import ViewLive from "./views/ViewLive";
 
 Vue.use(VueGoogleCharts)
 Vue.use(BootstrapVue);
@@ -21,7 +22,8 @@ Vue.config.productionTip = false
 
 const routes = [
   { path: '/', component: Create },
-  { path: '/view/:url_key', component: View }
+  { path: '/view/:url_key', component: View },
+  { path: '/view/live/:url_key', component: ViewLive }
 ]
 
 const router = new VueRouter({
