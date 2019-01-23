@@ -3,8 +3,8 @@ import App from './App.vue'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import VueRouter from 'vue-router'
-import HelloWorld from "./components/HelloWorld";
-import View from "./components/View";
+import Create from "./views/Create";
+import View from "./views/View";
 import BootstrapVue from 'bootstrap-vue'
 import VueGoogleCharts from 'vue-google-charts'
 
@@ -20,7 +20,7 @@ Vue.config.productionTip = false
 
 
 const routes = [
-  { path: '/', component: HelloWorld },
+  { path: '/', component: Create },
   { path: '/view/:url_key', component: View }
 ]
 
