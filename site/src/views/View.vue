@@ -43,10 +43,9 @@ export default {
       },
       chartData: [],
       chartOptions: {
-        chart: {
           title: 'Company Performance',
           subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-        }
+          'height':400,
       }
     }
   },

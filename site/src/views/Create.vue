@@ -1,24 +1,25 @@
 <template>
   <div class="container">
 
-    <!-- Page Heading -->
     <div class="row">
-      <div class="col-lg-4 col-lg-offset-4">
+      <div class="col-lg-8">
         <div class="input-group">
           <input type="text" class="form-control" v-model="data.name"/>
         </div>
-        <!-- /input-group -->
       </div>
-      <!-- /.col-lg-6 -->
     </div>
-    <!-- /.row -->
 
-    <!-- Project One -->
     <div class="row">
-      <auto-input :data="data.options" :btn-action="removeInput" :new-input-event="true"></auto-input>
+      <auto-input
+          :data="data.options"
+          :btn-action="removeInput"
+          :new-input-event="true"
+      />
     </div>
 
-    <div class="row"><button @click="createStrawpoll">create</button></div>
+    <div class="row">
+      <button @click="createStrawpoll">create</button>
+    </div>
 
 
   </div>
