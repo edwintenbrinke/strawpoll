@@ -42,7 +42,7 @@ export default {
   methods: {
     createStrawpoll: function() {
       this.axios
-        .post('http://localhost:8002/api/strawpoll/create',
+        .post(this.$_config.base_api_url + '/strawpoll/create',
           JSON.stringify(this.data)
         )
         .then(response => (

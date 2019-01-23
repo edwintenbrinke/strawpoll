@@ -78,13 +78,13 @@ export default {
       };
 
       this.axios
-          .get('http://localhost:8002/api/strawpoll/view/' + this.$route.params.url_key)
+          .get(this.$_config.base_api_url + '/strawpoll/view/' + this.$route.params.url_key)
           .then(response => (this.data = response.data))
   },
     methods: {
         vote: function(index) {
             this.axios
-                .post('http://localhost:8002/api/strawpoll/vote/' + this.data.options[index].id)
+                .post(this.$_config.base_api_url + '/strawpoll/vote/' + this.data.options[index].id)
                 .then(response => (this.data = response.data))
         },
         sendMessage: function(index) {
