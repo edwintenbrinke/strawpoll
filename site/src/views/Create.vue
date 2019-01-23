@@ -4,6 +4,7 @@
     <div class="row">
       <div class="col-lg-8">
         <div class="input-group">
+          <p>name</p>
           <input type="text" class="form-control" v-model="data.name"/>
         </div>
       </div>
@@ -46,7 +47,7 @@ export default {
           JSON.stringify(this.data)
         )
         .then(response => (
-             this.$router.push('/view/'+response.data.url_key)
+             this.$router.push('/view/' + response.data.url_key)
           )
         )
     },
